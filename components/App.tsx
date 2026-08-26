@@ -41,13 +41,14 @@ function Task({plan,setPlan}:{plan:Plan;setPlan:(p:Plan)=>void}){
 
 function ScaffoldSection({tone,icon,title,children}:{tone:string;icon:string;title:string;children:React.ReactNode}){return <div className={`scaffold ${tone}`}><Icon>{icon}</Icon><div><h3>{title}</h3>{children}</div></div>}
 function ScaffoldPlan({plan}:{plan:Plan}){
- const rec=recommend(plan); const vocab=plan.subject==="Science"?["erosion","sediment","surface","weathering","evidence","change"]:["describe","explain","evidence","because","compare"];
+ const rec=recommend(plan);
  return <section><div className="sectionHead"><div><span className="eyebrow blueText">STEP 3</span><h1>Your scaffold plan</h1><p>A focused starting point. Use what helps; fade support as independence grows.</p></div></div>
+   <div className="taskAnchor"><span>Built for this task</span><p>{plan.objective}</p><small>{plan.subject} · {plan.demands.slice(0,3).join(" · ")}{plan.demands.length>3?` · +${plan.demands.length-3} more`:""}</small></div>
    <ScaffoldSection tone="blue" icon="◎" title="Possible language demands to consider"><ul>{rec.demands.map(x=><li key={x}>This task asks the learner to use <b>{x.toLowerCase()}</b>.</li>)}</ul></ScaffoldSection>
    <div className="startFirst"><span>✦</span><div><h3>Start with these</h3><ol>{rec.priority.map(x=><li key={x}>{x}</li>)}</ol><small>The smallest useful set is usually the best place to begin.</small></div></div>
    <div className="planCols"><ScaffoldSection tone="green" icon="▣" title="Before the task"><ul>{rec.before.map(x=><li key={x}>{x}</li>)}</ul></ScaffoldSection><ScaffoldSection tone="orange" icon="☷" title="During the task"><ul>{rec.during.map(x=><li key={x}>{x}</li>)}</ul></ScaffoldSection></div>
-   <ScaffoldSection tone="purple" icon="▰" title="Language support to provide"><div className="supportGrid"><div><b>Essential vocabulary</b><div className="chips">{vocab.map(x=><span key={x}>{x}</span>)}</div></div><div><b>Useful language</b><p>“___ causes ___ because ___.”</p><p>“One effect of ___ is ___.”</p><p>“In the text, it says ___.”</p></div></div></ScaffoldSection>
-   <ScaffoldSection tone="teal" icon="●" title="Student independence"><p>The learner should still identify the relationship, choose relevant evidence, and compose the response. The scaffold provides access to language without providing the answer.</p></ScaffoldSection>
+   <ScaffoldSection tone="purple" icon="▰" title="Language support to provide"><div className="supportGrid"><div><b>Words drawn from this task</b><div className="chips">{rec.vocabulary.map(x=><span key={x}>{x}</span>)}</div></div><div><b>Frames matched to the task</b>{rec.frames.map(frame=><p key={frame}>“{frame}”</p>)}</div></div></ScaffoldSection>
+   <ScaffoldSection tone="teal" icon="●" title="Student independence"><p>{rec.independence}</p></ScaffoldSection>
    <div className="reminder">★ <b>Scaffold the language, not the thinking.</b></div>
  </section>
 }
