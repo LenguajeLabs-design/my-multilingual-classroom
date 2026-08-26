@@ -36,7 +36,11 @@ npm run build
 
 ## Deployment
 
-Deploy as a standard Next.js application on Vercel, Netlify, Render, Replit, or any Node host. Set the build command to `npm run build` and start command to `npm start`.
+Every push to `main` runs the GitHub Pages workflow and publishes the static export to:
+
+`https://lenguajelabs-design.github.io/my-multilingual-classroom/`
+
+The same codebase can also be hosted on Vercel, Netlify, Render, or Replit.
 
 ## Future ideas
 
