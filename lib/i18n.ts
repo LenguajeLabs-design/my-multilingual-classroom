@@ -8,6 +8,7 @@ const zh: Record<string,string> = {
   "Cause/effect language":"因果语言","Compare/contrast language":"比较与对比语言","Evidence language":"引用证据的语言","Extended written output":"较长篇幅的书面表达","Oral interaction":"口语互动","Sequence language":"顺序表达","Language of mathematics":"数学语言","Technical vocabulary":"专业词汇","Dense text":"信息密集的文本","Academic vocabulary":"学术词汇"
   ,"Explain how erosion changes Earth’s surface using evidence…":"例如：使用文本证据解释侵蚀如何改变地球表面……","Join a discussion":"参与讨论","Write a paragraph":"写一段话","Explain thinking":"解释思考过程","Give a presentation":"进行展示","Follow directions":"遵循指令"
   ,"Add an objective, at least one student action, and the classroom task to continue.":"请添加学习目标、至少一项学生活动和课堂任务后继续。"
+  ,"Can-Do Explorer":"Can-Do 探索器","Classroom Examples":"课堂活动示例","Build a Scaffold":"设计支架","Keep independent":"保持学生独立完成","TOOLS":"工具"
 };
 
 export function translate(text: string, lang: Language) { return lang === "zh" ? zh[text] ?? text : text; }

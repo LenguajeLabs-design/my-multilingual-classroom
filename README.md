@@ -1,10 +1,10 @@
 # My Multilingual Classroom
 
-A polished, privacy-minded teacher tool that turns a multilingual learner’s WIDA domain profile and a specific classroom task into a small, practical scaffold plan—without lowering the cognitive goal.
+A polished, privacy-minded teacher companion that helps educators explore what multilingual learners may be ready to do at different WIDA levels, see realistic classroom activities, and optionally build a task-specific scaffold plan—without lowering the cognitive goal.
 
 ## Product philosophy
 
-**Understand the learner. Scaffold the learning.** The app uses asset-based language, treats scores as one source of information, favors the smallest useful set of supports, and reminds teachers to fade scaffolds as independence grows.
+**Understand the learner. Scaffold the learning.** The app uses asset-based language, presents Can-Do statements as observable possibilities rather than limits, treats scores as one source of information, favors the smallest useful set of supports, and reminds teachers to fade scaffolds as independence grows.
 
 ## Run locally
 
@@ -20,11 +20,12 @@ Open `http://localhost:3000`. Use **Load Demo Learner** to try the full workflow
 - `app/`: Next.js App Router entry points and responsive visual system
 - `components/App.tsx`: accessible workflow and reusable presentation components
 - `data/wida.ts`: domain, proficiency-band, subject, and task-demand data
+- `data/cando.ts`: bilingual Can-Do logic and classroom activity examples by grade band, domain, level, and task
 - `data/strategies.ts`: initial scaffold library
 - `lib/recommendations.ts`: deterministic analysis, prioritization, snapshot, and prompt logic
 - `tests/`: recommendation and prompt tests
 
-No AI API, database, authentication, analytics, or student-name field is used. State exists only in React memory and is not transmitted or persisted.
+The Can-Do Explorer is the primary experience. The existing scaffold builder is an optional deeper workflow and receives the selected grade, domain, level, and task automatically. No AI API, database, authentication, analytics, or student-name field is used. Instructional state exists only in React memory and is not transmitted or persisted.
 
 ## Quality checks
 
