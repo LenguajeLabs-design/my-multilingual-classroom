@@ -20,12 +20,12 @@ const supports = {
 } satisfies Record<Domain,string[]>;
 
 const levelTaskPerformance = [
-  (action:string)=>`show progress toward the task—${action}—by pointing, matching, drawing, labeling, or using familiar words`,
-  (action:string)=>`work toward the task—${action}—using phrases, sentence patterns, and illustrated choices`,
-  (action:string)=>`${action} using connected simple sentences and some expanded sentences`,
-  (action:string)=>`${action} using organized, detailed language with increasingly precise vocabulary`,
-  (action:string)=>`${action} using extended, purposeful language adapted to the audience and task`,
-  (action:string)=>`${action} flexibly using nuanced, specialized language and an individual voice`
+  (action:string)=>`begin to ${action} by pointing, matching, drawing, labeling, or using familiar words`,
+  (action:string)=>`use phrases, an illustrated choice, or a sentence pattern to ${action}`,
+  (action:string)=>`use connected simple sentences and some expanded sentences to ${action}`,
+  (action:string)=>`use organized, detailed language and increasingly precise vocabulary to ${action}`,
+  (action:string)=>`use extended, purposeful language adapted to the audience to ${action}`,
+  (action:string)=>`use nuanced, specialized language and an individual voice to ${action}`
 ];
 
 const levelEvidence = [
@@ -64,6 +64,17 @@ const levelIndependence = [
   "The learner makes the same substantive and rhetorical decisions expected of proficient multilingual peers."
 ];
 
+const taskExamples:Record<CanDoTask,string[]> = {
+  "Follow directions":["Points to the pictures, puts them in order, and says, “First… then.”","Follows two pictured steps and says, “First cut. Then glue.”","Follows a short sequence and retells it: “First we measured the water, and then we poured it into the cup.”","Follows multi-step oral directions, asks one clarifying question, and explains the sequence accurately.","Carries out detailed directions and explains how changing the order would affect the result.","Interprets complex directions, resolves ambiguity, and adapts the procedure appropriately."],
+  "Read informational text":["Matches a labeled picture to the sentence “Water moves soil.”","Points to a key sentence and says, “This is about erosion.”","States the main idea and two details using connected sentences.","Explains how the text structure and details develop the main idea.","Interprets a subtle claim and explains how multiple details support it.","Evaluates the author’s explanation, terminology, and use of evidence across the text."],
+  "Discuss an idea":["Points to a diagram and says, “I think water.”","Says, “I agree because the water moves the soil.”","Builds on a partner: “I agree, and I also think wind changes the land because…”","Clarifies and challenges an idea using relevant details from the lesson.","Qualifies a claim, compares perspectives, and responds to counterarguments.","Shapes the discussion by synthesizing ideas and adjusting language for the group."],
+  "Answer questions":["Selects the matching picture and labels it “water.”","Answers, “Water moves the soil,” using a provided pattern.","Answers the question in connected sentences and includes one relevant detail.","Constructs a complete response with an explanation and accurately chosen evidence.","Addresses all parts of the question and explains the significance of the evidence.","Crafts a precise, nuanced response and accounts for ambiguity in the question or source."],
+  "Explain thinking":["Points to the diagram and says, “Water… soil move.”","Says, “The soil moves because the water pushes it.”","Explains, “Water carries small pieces of soil, so the surface slowly changes.”","Explains the cause-and-effect chain using precise details and clear transitions.","Explains interacting causes, qualifies the claim, and addresses a possible exception.","Constructs a nuanced explanation using specialized language and independently chosen evidence."],
+  "Use evidence":["Points to a highlighted sentence and says, “Here—water moves soil.”","Copies or names one relevant detail and says, “This shows the land changes.”","Paraphrases one detail and explains how it supports the idea.","Selects the strongest evidence and connects it to the claim with explicit reasoning.","Integrates multiple pieces of evidence and evaluates their relevance and strength.","Synthesizes evidence across sources, noting limitations or competing interpretations."],
+  "Write a paragraph":["Draws the process and adds labels such as “water,” “soil,” and “move.”","Writes patterned sentences: “Water moves soil. This changes the land.”","Writes a topic sentence and connected supporting details with a closing statement.","Develops a cohesive paragraph with precise vocabulary, evidence, and varied transitions.","Adapts an extended paragraph for purpose and audience while maintaining cohesion and voice.","Crafts a nuanced paragraph with deliberate structure, disciplinary precision, and individual style."],
+  "Present learning":["Shows a visual, names key parts, and uses gestures to communicate the main idea.","Uses a labeled visual and rehearsed phrases to give a short explanation.","Presents connected ideas and answers a familiar follow-up question.","Gives an organized, detailed presentation and responds to clarifying questions.","Adapts language and emphasis for the audience and responds thoughtfully to challenges.","Presents with disciplinary precision, rhetorical control, and flexible responses to questions."]
+};
+
 const zhLevelLanguage = {
   Listening: ["借助熟悉词汇、手势和视觉线索理解信息", "借助视觉支持理解简短且有规律的表达", "理解有关熟悉内容的连贯句子", "在少量支持下理解较详细的口头解释", "在不同情境中理解较长的学术表达", "灵活理解专业口语"],
   Speaking: ["使用手势、单词和熟悉表达进行交流", "使用短语和有规律的句子分享想法", "用简单句和部分扩展句连接想法", "使用连贯且逐渐精确的语言解释想法", "根据目的和听众调整详细的学术语言", "灵活使用专业口语"],
@@ -83,6 +94,16 @@ const zhEvidence = ["可通过非语言方式和熟悉词汇展示学科理解�
 const zhSupportMoves = [["教师用手势、视觉材料或思维示范完成一个例子","允许指认、动作、绘画、口语或书写等多种回应方式"],["提供一个与任务相关的可选句型","独立回应前先与同伴进行口头演练"],["使用简单组织器帮助连接和扩展想法","用简短反馈提示补充细节或澄清意思"],["只针对准确词汇、连贯性或体裁提供支持","给予规划和修改时间，而不是继续简化任务"],["针对细微含义、语域、听众和证据力度反馈","保留复杂范例和原有思维要求"],["提供与同伴相同的策略工具和真实选择","只在有助于准确度和表达效果时提供专业反馈"]];
 const zhTeacherMoves = [["用视觉材料和动作示范含义，再邀请学生用任何有效方式回应","通过展示或操作检查理解，而不只依赖英语表达","明确肯定并利用学生的家庭语言和学科知识"],["将学生短语自然扩展成实用句型，但不要求机械模仿","提供两个有意义的回应选择，再邀请学生补充想法","分享或写作前给予口头演练时间"],["提示学生使用“因为、所以、但是”等连接词连接想法","用一个追问引出细节，而不是纠正所有语言问题","学生能持续使用连贯句子后逐步撤除组织器"],["用“哪个细节？”或“它们如何相关？”等问题促进准确表达","针对组织和连贯性反馈，同时保留学生自己的推理","撤除广泛支架，只保留仍需要的词汇或体裁提示"],["邀请学生限定、比较、质疑观点并根据听众调整表达","重点讨论细微含义和表达效果，而非基本完成情况","把复杂的同伴或学科范例作为资源，而不是脚本"],["在形式、语域、证据和听众方面提供真实选择","以专业读者或听众身份回应，并关注多语优势","只在能提升准确度或影响力时提供专业反馈"]];
 const zhIndependence = ["学生独立决定要表达的意思，可通过指认、动作、绘画、口语或书写展示。","学生独立选择观点；句型和词汇库帮助表达，但不提供答案。","学生独立连接并发展想法；组织器只支撑结构，不代替推理。","学生独立组织、扩展和修改回应；反馈关注语言，不替学生决定内容。","学生独立形成观点、选择证据、处理细微含义并考虑听众，只接受策略性语言反馈。","学生作出与熟练多语同伴相同的内容和表达决策。"];
+const zhTaskExamples:Record<CanDoTask,string[]> = {
+  "Follow directions":["指着图片排序，并说：“先……然后……”","按照两个图示步骤操作，并说：“先剪，再粘。”","完成简短步骤并复述：“我们先量水，然后倒进杯子。”","完成多步骤口头指令，提出一个澄清问题，并准确说明顺序。","完成详细指令，并解释改变顺序会如何影响结果。","理解复杂指令，解决歧义并适当调整步骤。"],
+  "Read informational text":["把带标签的图片与“水移动土壤”配对。","指着关键句说：“这篇讲侵蚀。”","用连贯句子说出主旨和两个细节。","解释文本结构和细节如何发展主旨。","理解较含蓄的观点，并说明多个细节如何支持它。","评价作者的解释、术语和全文证据使用。"],
+  "Discuss an idea":["指着图说：“我觉得是水。”","说：“我同意，因为水移动土壤。”","回应同伴：“我同意，而且我觉得风也会改变土地，因为……”","用课程细节澄清或质疑一个观点。","限定观点、比较不同看法并回应反方意见。","综合小组观点并根据讨论需要调整表达。"],
+  "Answer questions":["选择匹配图片并标注“水”。","借助句型回答：“水移动土壤。”","用连贯句子回答，并加入一个相关细节。","用解释和准确证据组织完整回答。","回答问题的所有部分，并解释证据的重要性。","准确而细致地回应，并处理问题或材料中的歧义。"],
+  "Explain thinking":["指着图说：“水……土移动。”","说：“土移动，因为水推它。”","解释：“水带走小块土壤，所以地表慢慢改变。”","用准确细节和清晰衔接解释完整因果链。","解释相互作用的原因、限定观点，并回应一种例外情况。","使用专业语言和自主选择的证据作出细致解释。"],
+  "Use evidence":["指着高亮句说：“这里——水移动土壤。”","摘录一个相关细节并说：“这说明土地改变了。”","转述一个细节，并解释它如何支持观点。","选择最有力的证据，并明确说明它与观点的联系。","整合多条证据并评价其相关性和力度。","综合不同来源的证据，并指出局限或其他解释。"],
+  "Write a paragraph":["画出过程，并标注“水、土、移动”等词。","写出句型化句子：“水移动土壤。这改变土地。”","写出主题句、相互连接的支持细节和结束句。","使用准确词汇、证据和多样衔接写出连贯段落。","根据目的和读者调整较长段落，同时保持连贯和个人表达。","以清晰结构、学科准确度和个人风格写出细致段落。"],
+  "Present learning":["展示视觉材料、说出关键部分，并用手势表达主旨。","借助带标签的视觉材料和演练短语进行简短说明。","展示连贯想法，并回答一个熟悉的追问。","进行有组织、详细的展示，并回应澄清问题。","根据听众调整语言和重点，并认真回应质疑。","以学科准确度和表达控制进行展示，并灵活回应问题。"]
+};
 
 type Activity = { title:string; titleZh:string; setup:string; setupZh:string; student:string; studentZh:string; independent:string; independentZh:string; fade:string; fadeZh:string; time:string };
 export const activities: Record<CanDoTask,Activity> = {
@@ -107,13 +128,15 @@ export function getCanDoProfile(domain:Domain,level:number,task:CanDoTask,gradeB
     canDos:[zhLevelLanguage[domain][i],`${zhTaskPerformance[i]}：${taskActionZh[task]}`,`${younger?"在实物、图画和互动中":"在年级学科任务中"}${zhEvidence[i]}`],
     supports:[zhSupports[domain][i],...zhSupportMoves[i]],
     teacherMoves:zhTeacherMoves[i],
-    independence:`${zhIndependence[i]} 核心目标仍是：${taskActionZh[task]}。语言支架不应替学生选择想法、证据或答案。`
+    independence:`${zhIndependence[i]} 核心目标仍是：${taskActionZh[task]}。语言支架不应替学生选择想法、证据或答案。`,
+    example:zhTaskExamples[task][i]
   };
   return {
     canDos:[levelLanguage[domain][i],levelTaskPerformance[i](taskAction[task]),`${younger?"in hands-on, visual, and interactive work, ":"in grade-level content work, "}${levelEvidence[i]}`],
     supports:[supports[domain][i],...levelSupportMoves[i]],
     teacherMoves:levelTeacherMoves[i],
-    independence:`${levelIndependence[i]} The core goal remains to ${taskAction[task]}. Language support should not select the ideas, evidence, or answer for the learner.`
+    independence:`${levelIndependence[i]} The core goal remains to ${taskAction[task]}. Language support should not select the ideas, evidence, or answer for the learner.`,
+    example:taskExamples[task][i]
   };
 }
 

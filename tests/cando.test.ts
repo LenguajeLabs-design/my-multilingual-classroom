@@ -23,6 +23,7 @@ describe("Can-Do Explorer content",()=>{
     expect(new Set(profiles.map(x=>x.supports.join("|"))).size).toBe(6);
     expect(new Set(profiles.map(x=>x.teacherMoves.join("|"))).size).toBe(6);
     expect(new Set(profiles.map(x=>x.independence)).size).toBe(6);
+    expect(new Set(profiles.map(x=>x.example)).size).toBe(6);
     expect(profiles[0].canDos.join(" ")).toContain("pointing, matching, drawing");
     expect(profiles[5].canDos.join(" ")).toContain("nuanced, specialized language");
   });
