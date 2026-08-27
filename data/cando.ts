@@ -19,6 +19,51 @@ const supports = {
   Writing: ["drawing, labeling, and shared writing", "oral rehearsal, a visual word bank, and optional frames", "an organizer and a brief mentor example", "genre models and feedback on cohesion", "feedback on precision, voice, and audience", "authentic writing choices and expert feedback"]
 } satisfies Record<Domain,string[]>;
 
+const levelTaskPerformance = [
+  (action:string)=>`show progress toward the task—${action}—by pointing, matching, drawing, labeling, or using familiar words`,
+  (action:string)=>`work toward the task—${action}—using phrases, sentence patterns, and illustrated choices`,
+  (action:string)=>`${action} using connected simple sentences and some expanded sentences`,
+  (action:string)=>`${action} using organized, detailed language with increasingly precise vocabulary`,
+  (action:string)=>`${action} using extended, purposeful language adapted to the audience and task`,
+  (action:string)=>`${action} flexibly using nuanced, specialized language and an individual voice`
+];
+
+const levelEvidence = [
+  "demonstrate content understanding nonverbally and with familiar words; a full English sentence is not yet required",
+  "combine visuals, oral language, and patterned sentences to communicate a complete idea",
+  "connect ideas across several sentences and clarify meaning with a partner",
+  "organize and elaborate ideas with relevant details and clearer transitions",
+  "explain subtle relationships, qualify claims, and adjust language for purpose",
+  "communicate with precision and flexibility comparable to proficient multilingual peers"
+];
+
+const levelSupportMoves = [
+  ["one modeled example with gestures or think-aloud", "multiple ways to respond: point, act, draw, say, or write"],
+  ["one optional sentence pattern tied to the task", "oral rehearsal with a partner before an independent response"],
+  ["a simple organizer for connecting and expanding ideas", "brief feedback that prompts the learner to add detail or clarify"],
+  ["targeted support for precise vocabulary, cohesion, or genre", "time to plan and revise rather than additional simplification"],
+  ["feedback on nuance, register, audience, and strength of evidence", "access to complex models without reducing the intellectual demand"],
+  ["the same strategic tools and authentic choices available to peers", "specialized feedback that strengthens precision and individual voice"]
+];
+
+const levelTeacherMoves = [
+  ["Model the meaning with visuals and actions, then invite any valid mode of response", "Check understanding through showing or doing—not only through English production", "Name and build from the learner’s home-language and content knowledge"],
+  ["Recast the learner’s phrase as a useful sentence pattern without requiring imitation", "Offer two meaningful response choices, then invite the learner to add an idea", "Let the learner rehearse orally before sharing or writing"],
+  ["Prompt the learner to connect ideas with because, so, but, or another useful connector", "Ask one follow-up that elicits detail instead of correcting every language feature", "Fade the organizer once the learner can sustain connected sentences"],
+  ["Press for precision with prompts such as Which detail? or How are these related?", "Give feedback on organization and cohesion while preserving the learner’s reasoning", "Remove broad supports and keep only the vocabulary or genre cue still needed"],
+  ["Invite the learner to qualify, compare, challenge, and adapt ideas for an audience", "Confer about nuance and effectiveness rather than basic completion", "Use complex peer and disciplinary models as resources, not scripts"],
+  ["Offer authentic choice in form, register, evidence, and audience", "Respond as an expert reader or listener while noticing multilingual strengths", "Provide specialized feedback only where it advances precision or impact"]
+];
+
+const levelIndependence = [
+  "The learner chooses the meaning and may show it by pointing, acting, drawing, speaking, or writing.",
+  "The learner chooses the idea; patterns and word banks support expression but do not supply the response.",
+  "The learner connects and develops the ideas; an organizer may hold the structure but not the reasoning.",
+  "The learner organizes, elaborates, and revises the response; feedback should target language rather than decide the content.",
+  "The learner shapes the claim, evidence, nuance, and audience impact with only strategic language feedback.",
+  "The learner makes the same substantive and rhetorical decisions expected of proficient multilingual peers."
+];
+
 const zhLevelLanguage = {
   Listening: ["借助熟悉词汇、手势和视觉线索理解信息", "借助视觉支持理解简短且有规律的表达", "理解有关熟悉内容的连贯句子", "在少量支持下理解较详细的口头解释", "在不同情境中理解较长的学术表达", "灵活理解专业口语"],
   Speaking: ["使用手势、单词和熟悉表达进行交流", "使用短语和有规律的句子分享想法", "用简单句和部分扩展句连接想法", "使用连贯且逐渐精确的语言解释想法", "根据目的和听众调整详细的学术语言", "灵活使用专业口语"],
@@ -32,6 +77,12 @@ const zhSupports = {
   Reading: ["带标签的视觉材料和教师示范", "分段图文和图片词汇表", "阅读目的、批注和同伴交流", "文本结构提示和重点词汇", "对细微含义和陌生文化背景的支持", "与同伴相同的策略性阅读工具"],
   Writing: ["绘画、标注和共同写作", "口头演练、图文词汇库和可选句型", "图示组织器和简短范例", "体裁范例和连贯性反馈", "对准确度、语气和读者意识的反馈", "真实的写作选择和专业反馈"]
 } satisfies Record<Domain,string[]>;
+
+const zhTaskPerformance = ["可通过指认、配对、绘画、标注或熟悉词汇逐步完成任务","可借助短语、句型和图示选择完成任务","可使用相互连接的简单句和部分扩展句完成任务","可使用有组织、较详细且逐渐精确的语言完成任务","可根据目的和听众使用较长且有针对性的语言完成任务","可灵活使用细致、专业的语言和个人表达方式完成任务"];
+const zhEvidence = ["可通过非语言方式和熟悉词汇展示学科理解，暂不要求完整英语句子","可结合视觉、口语和句型表达完整想法","可用多个句子连接想法，并与同伴澄清意思","可用相关细节和清晰衔接组织并扩展想法","可解释细微关系、限定观点，并根据目的调整语言","可以与熟练多语学习者相当的准确度和灵活性进行表达"];
+const zhSupportMoves = [["教师用手势、视觉材料或思维示范完成一个例子","允许指认、动作、绘画、口语或书写等多种回应方式"],["提供一个与任务相关的可选句型","独立回应前先与同伴进行口头演练"],["使用简单组织器帮助连接和扩展想法","用简短反馈提示补充细节或澄清意思"],["只针对准确词汇、连贯性或体裁提供支持","给予规划和修改时间，而不是继续简化任务"],["针对细微含义、语域、听众和证据力度反馈","保留复杂范例和原有思维要求"],["提供与同伴相同的策略工具和真实选择","只在有助于准确度和表达效果时提供专业反馈"]];
+const zhTeacherMoves = [["用视觉材料和动作示范含义，再邀请学生用任何有效方式回应","通过展示或操作检查理解，而不只依赖英语表达","明确肯定并利用学生的家庭语言和学科知识"],["将学生短语自然扩展成实用句型，但不要求机械模仿","提供两个有意义的回应选择，再邀请学生补充想法","分享或写作前给予口头演练时间"],["提示学生使用“因为、所以、但是”等连接词连接想法","用一个追问引出细节，而不是纠正所有语言问题","学生能持续使用连贯句子后逐步撤除组织器"],["用“哪个细节？”或“它们如何相关？”等问题促进准确表达","针对组织和连贯性反馈，同时保留学生自己的推理","撤除广泛支架，只保留仍需要的词汇或体裁提示"],["邀请学生限定、比较、质疑观点并根据听众调整表达","重点讨论细微含义和表达效果，而非基本完成情况","把复杂的同伴或学科范例作为资源，而不是脚本"],["在形式、语域、证据和听众方面提供真实选择","以专业读者或听众身份回应，并关注多语优势","只在能提升准确度或影响力时提供专业反馈"]];
+const zhIndependence = ["学生独立决定要表达的意思，可通过指认、动作、绘画、口语或书写展示。","学生独立选择观点；句型和词汇库帮助表达，但不提供答案。","学生独立连接并发展想法；组织器只支撑结构，不代替推理。","学生独立组织、扩展和修改回应；反馈关注语言，不替学生决定内容。","学生独立形成观点、选择证据、处理细微含义并考虑听众，只接受策略性语言反馈。","学生作出与熟练多语同伴相同的内容和表达决策。"];
 
 type Activity = { title:string; titleZh:string; setup:string; setupZh:string; student:string; studentZh:string; independent:string; independentZh:string; fade:string; fadeZh:string; time:string };
 export const activities: Record<CanDoTask,Activity> = {
@@ -53,16 +104,16 @@ export function getCanDoProfile(domain:Domain,level:number,task:CanDoTask,gradeB
   const i=Math.max(0,Math.min(5,level-1));
   const younger=gradeBand==="K–2";
   if(lang==="zh") return {
-    canDos:[zhLevelLanguage[domain][i],`在${taskZh[task]}中完成与该阶段相符的语言任务`,younger?"借助实物、图画和互动展示理解":"通过视觉、口头或书面方式展示年级内容理解"],
-    supports:[zhSupports[domain][i],"清晰示范任务要求和成功标准","在独立完成前提供简短演练机会"],
-    teacherMoves:["先示范过程，而不是提供答案","观察学习者如何回应，再决定是否增加支持","允许使用家庭语言进行思考和意义建构"],
-    independence:`学习者仍应独立${taskActionZh[task]}。语言支架不应替学生选择想法、证据或答案。`
+    canDos:[zhLevelLanguage[domain][i],`${zhTaskPerformance[i]}：${taskActionZh[task]}`,`${younger?"在实物、图画和互动中":"在年级学科任务中"}${zhEvidence[i]}`],
+    supports:[zhSupports[domain][i],...zhSupportMoves[i]],
+    teacherMoves:zhTeacherMoves[i],
+    independence:`${zhIndependence[i]} 核心目标仍是：${taskActionZh[task]}。语言支架不应替学生选择想法、证据或答案。`
   };
   return {
-    canDos:[levelLanguage[domain][i],`${taskAction[task]} using language characteristic of this phase`,younger?"show understanding through objects, pictures, movement, and interaction":"show grade-level content understanding through visual, oral, or written responses"],
-    supports:[supports[domain][i],"a clear model of the task and success criteria","a brief opportunity to rehearse before working independently"],
-    teacherMoves:["Model the process without supplying the answer","Observe the learner’s response before adding more support","Welcome home-language sense-making and brainstorming"],
-    independence:`The learner should still ${taskAction[task]}. Language support should not select the ideas, evidence, or answer for the learner.`
+    canDos:[levelLanguage[domain][i],levelTaskPerformance[i](taskAction[task]),`${younger?"in hands-on, visual, and interactive work, ":"in grade-level content work, "}${levelEvidence[i]}`],
+    supports:[supports[domain][i],...levelSupportMoves[i]],
+    teacherMoves:levelTeacherMoves[i],
+    independence:`${levelIndependence[i]} The core goal remains to ${taskAction[task]}. Language support should not select the ideas, evidence, or answer for the learner.`
   };
 }
 
