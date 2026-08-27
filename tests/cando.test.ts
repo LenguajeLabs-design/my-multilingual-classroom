@@ -35,6 +35,6 @@ describe("Can-Do Explorer content",()=>{
   it("keeps the cognitive task independent",()=>{
     const profile=getCanDoProfile("Reading",3,"Use evidence","3–5","en");
     expect(profile.independence).toContain("select relevant evidence");
-    expect(profile.independence).toContain("should not select");
+    expect(profile.independence).toContain("not the reasoning");
   });
 });

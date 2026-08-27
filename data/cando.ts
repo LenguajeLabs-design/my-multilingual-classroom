@@ -56,12 +56,12 @@ const levelTeacherMoves = [
 ];
 
 const levelIndependence = [
-  "The learner chooses the meaning and may show it by pointing, acting, drawing, speaking, or writing.",
-  "The learner chooses the idea; patterns and word banks support expression but do not supply the response.",
-  "The learner connects and develops the ideas; an organizer may hold the structure but not the reasoning.",
-  "The learner organizes, elaborates, and revises the response; feedback should target language rather than decide the content.",
-  "The learner shapes the claim, evidence, nuance, and audience impact with only strategic language feedback.",
-  "The learner makes the same substantive and rhetorical decisions expected of proficient multilingual peers."
+  (action:string)=>`The learner decides how to ${action} and may respond by pointing, acting, drawing, speaking, or writing. Support carries the language, not the answer.`,
+  (action:string)=>`The learner chooses the idea and how to ${action}. Patterns and word banks support expression, not the answer.`,
+  (action:string)=>`The learner decides how to ${action} and connects the ideas. An organizer holds the structure, not the reasoning.`,
+  (action:string)=>`The learner decides how to ${action}, then organizes and revises the response. Feedback targets language, not content choices.`,
+  (action:string)=>`The learner shapes how to ${action}, including the claim, evidence, nuance, and audience impact.`,
+  (action:string)=>`The learner makes the substantive and rhetorical decisions needed to ${action}, as proficient multilingual peers do.`
 ];
 
 const taskExamples:Record<CanDoTask,string[]> = {
@@ -93,7 +93,7 @@ const zhTaskPerformance = ["可通过指认、配对、绘画、标注或熟悉�
 const zhEvidence = ["可通过非语言方式和熟悉词汇展示学科理解，暂不要求完整英语句子","可结合视觉、口语和句型表达完整想法","可用多个句子连接想法，并与同伴澄清意思","可用相关细节和清晰衔接组织并扩展想法","可解释细微关系、限定观点，并根据目的调整语言","可以与熟练多语学习者相当的准确度和灵活性进行表达"];
 const zhSupportMoves = [["教师用手势、视觉材料或思维示范完成一个例子","允许指认、动作、绘画、口语或书写等多种回应方式"],["提供一个与任务相关的可选句型","独立回应前先与同伴进行口头演练"],["使用简单组织器帮助连接和扩展想法","用简短反馈提示补充细节或澄清意思"],["只针对准确词汇、连贯性或体裁提供支持","给予规划和修改时间，而不是继续简化任务"],["针对细微含义、语域、听众和证据力度反馈","保留复杂范例和原有思维要求"],["提供与同伴相同的策略工具和真实选择","只在有助于准确度和表达效果时提供专业反馈"]];
 const zhTeacherMoves = [["用视觉材料和动作示范含义，再邀请学生用任何有效方式回应","通过展示或操作检查理解，而不只依赖英语表达","明确肯定并利用学生的家庭语言和学科知识"],["将学生短语自然扩展成实用句型，但不要求机械模仿","提供两个有意义的回应选择，再邀请学生补充想法","分享或写作前给予口头演练时间"],["提示学生使用“因为、所以、但是”等连接词连接想法","用一个追问引出细节，而不是纠正所有语言问题","学生能持续使用连贯句子后逐步撤除组织器"],["用“哪个细节？”或“它们如何相关？”等问题促进准确表达","针对组织和连贯性反馈，同时保留学生自己的推理","撤除广泛支架，只保留仍需要的词汇或体裁提示"],["邀请学生限定、比较、质疑观点并根据听众调整表达","重点讨论细微含义和表达效果，而非基本完成情况","把复杂的同伴或学科范例作为资源，而不是脚本"],["在形式、语域、证据和听众方面提供真实选择","以专业读者或听众身份回应，并关注多语优势","只在能提升准确度或影响力时提供专业反馈"]];
-const zhIndependence = ["学生独立决定要表达的意思，可通过指认、动作、绘画、口语或书写展示。","学生独立选择观点；句型和词汇库帮助表达，但不提供答案。","学生独立连接并发展想法；组织器只支撑结构，不代替推理。","学生独立组织、扩展和修改回应；反馈关注语言，不替学生决定内容。","学生独立形成观点、选择证据、处理细微含义并考虑听众，只接受策略性语言反馈。","学生作出与熟练多语同伴相同的内容和表达决策。"];
+const zhIndependence = ["学生独立决定任务内容，可通过指认、动作、绘画、口语或书写回应。支架帮助语言表达，不提供答案。","学生独立选择观点；句型和词汇库帮助表达，不提供答案。","学生独立连接并发展想法；组织器支撑结构，不代替推理。","学生独立组织并修改回应；反馈针对语言，不替学生决定内容。","学生独立决定观点、证据、细微含义和听众效果。","学生独立作出与熟练多语同伴相同的内容和表达决策。"];
 const zhTaskExamples:Record<CanDoTask,string[]> = {
   "Follow directions":["指着图片排序，并说：“先……然后……”","按照两个图示步骤操作，并说：“先剪，再粘。”","完成简短步骤并复述：“我们先量水，然后倒进杯子。”","完成多步骤口头指令，提出一个澄清问题，并准确说明顺序。","完成详细指令，并解释改变顺序会如何影响结果。","理解复杂指令，解决歧义并适当调整步骤。"],
   "Read informational text":["把带标签的图片与“水移动土壤”配对。","指着关键句说：“这篇讲侵蚀。”","用连贯句子说出主旨和两个细节。","解释文本结构和细节如何发展主旨。","理解较含蓄的观点，并说明多个细节如何支持它。","评价作者的解释、术语和全文证据使用。"],
@@ -128,14 +128,14 @@ export function getCanDoProfile(domain:Domain,level:number,task:CanDoTask,gradeB
     canDos:[zhLevelLanguage[domain][i],`${zhTaskPerformance[i]}：${taskActionZh[task]}`,`${younger?"在实物、图画和互动中":"在年级学科任务中"}${zhEvidence[i]}`],
     supports:[zhSupports[domain][i],...zhSupportMoves[i]],
     teacherMoves:zhTeacherMoves[i],
-    independence:`${zhIndependence[i]} 核心目标仍是：${taskActionZh[task]}。语言支架不应替学生选择想法、证据或答案。`,
+    independence:`${zhIndependence[i]} 核心任务：${taskActionZh[task]}。`,
     example:zhTaskExamples[task][i]
   };
   return {
     canDos:[levelLanguage[domain][i],levelTaskPerformance[i](taskAction[task]),`${younger?"in hands-on, visual, and interactive work, ":"in grade-level content work, "}${levelEvidence[i]}`],
     supports:[supports[domain][i],...levelSupportMoves[i]],
     teacherMoves:levelTeacherMoves[i],
-    independence:`${levelIndependence[i]} The core goal remains to ${taskAction[task]}. Language support should not select the ideas, evidence, or answer for the learner.`,
+    independence:levelIndependence[i](taskAction[task]),
     example:taskExamples[task][i]
   };
 }
